@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="un8">
+  <meta name="author" content="un8">
+  <!-- <link rel="icon" href="../../favicon.ico"> -->
+  <title>un8</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/screen.css" rel="stylesheet">
+  <script src="js/ie-emulation-modes-warning.js"></script>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    </head>
+    
+    <body>
+      <div class="container">
+        <!-- Static navbar -->
+        <header>
+         <nav class="navbar navbar-default navbar-static-top">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><span>un</span>eight</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav pull-right">
+              <li class="nav-schedule"><a href="/">Расписание</a></li>
+              <li class="dropdown nav-languages">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Язык<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Русский</a></li>
+                  <li><a href="#">Польский</a></li>
+                  <li><a href="#">Английский</a></li>
+                  <li><a href="#">Украинский</a></li>
+                </ul>
+              </li>
+              <li class="nav-loginuser"><a href="/" data-toggle="modal" data-target="#myModal">Войти</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </nav>
+      </header>
+      <div class="content results-page">
+        <form class="form-inline search-form">
+          <div class="form-group"> 
+            <label for="transportType"></label>
+            <select name="transport" id="transportType">
+              <option value="plane">Самолет</option>
+              <option value="traine">Поезд</option>
+              <option value="bus">Автобус</option>
+            </select>   
+          </div>
+          <div class="form-group">
+            <label for="wayFrom"></label>
+            <input type="text"  id="wayFrom" placeholder="Санкт-Петербург">
+          </div>
+          <div class="form-group">
+            <label for="wayDestination"></label>
+            <input type="text"  id="wayDestination" placeholder="Куда">
+          </div>
+          <div class="form-group">
+            <label for="tripDate"></label>
+            <input type="date"  id="tripDate">
+          </div>
+          <div class="form-group">
+            <label for="passengerValue"></label>
+            <select name="passrValue" id="passengerValue">
+              <option value="1">1 пассажир</option>
+              <option value="2">2 пассажира</option>
+              <option value="2">3 пассажира</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-default">Поиск</button>
+        </form><!-- search-form end -->
+        <div class="row more-advise">
+          <div class="col-lg-12">
+            <a href="/" class="special-advise pull-left">Спецпредложения</a>
+            <a href="/" class="extended-search pull-right">Расширенный поиск</a>
+          </div>
+        </div>
+        <div class="row ticket-filter">
+          <div class="col-md-2 col-lg-2">
+            <div class="arrow-block">
+              <i class="fa fa-angle-up filter-clicked" aria-hidden="true"></i>
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </div>
+            <div class="filter-title">Авиакомпания</div>
+          </div>
+          <div class="col-md-2 col-lg-2">
+            <div class="arrow-block">
+              <i class="fa fa-angle-up" aria-hidden="true"></i>
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </div>
+            <div class="filter-title">Вылет</div>
+          </div>
+          <div class="col-md-2 col-lg-2">
+            <div class="arrow-block">
+              <i class="fa fa-angle-up" aria-hidden="true"></i>
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </div>
+            <div class="filter-title">Прибытие</div>
+          </div>
+          <div class="col-md-2 col-lg-2">
+            <div class="arrow-block ">
+              <i class="fa fa-angle-up" aria-hidden="true"></i>
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </div>
+            <div class="filter-title">В пути</div>
+          </div>
+          <div class="col-md-2 col-lg-2">
+            <div class="arrow-block">
+              <i class="fa fa-angle-up" aria-hidden="true"></i>
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </div>
+            <div class="filter-title">Детали</div>
+          </div>
+          <div class="col-md-2 col-lg-2 price-filter">
+            <div class="arrow-block">
+              <i class="fa fa-angle-up" aria-hidden="true"></i>
+              <i class="fa fa-angle-down" aria-hidden="true"></i>
+            </div>
+            <div class="filter-title">Стоимость</div> </div>
+          </div>
+          <div class="row tickets-list most-acceptable">
+            <div class="col-md-2 col-lg-2">
+             <div class="filter-title show-mob">Авиакомпания</div>
+             <ul>
+              <li class="ticket-list-title">UIA</li>
+              <li>Рейс: PS-517</li>
+              <li>Boeing 737-300</li>
+              <li>Эконом класс</li>
+            </ul>
+          </div>
+          <div class="col-md-2 col-lg-2">
+            <div class="filter-title show-mob">Вылет</div>
+            <ul>
+              <li class="ticket-list-title">20:30</li>
+              <li>18 марта 2017,</li>
+              <li>Пятница</li>
+              <li>из Киев <span>KBP</span></li>
+            </ul>
+          </div>
+          <div class="col-md-2 col-lg-2">
+            <div class="filter-title show-mob">Прибытие</div>
+            <ul>
+              <li class="ticket-list-title">01:15</li>
+              <li>19 марта 2017,</li>
+              <li>Суббота</li>
+              <li>в Тбилиси <span>TBS</span></li>
+            </ul>
+          </div>
+          <div class="col-md-2 col-lg-2">
+            <div class="filter-title show-mob">В пути</div>
+            <ul>
+              <li class="ticket-list-title">4 ч 05 мин</li>
+            </ul>
+          </div>
+          <div class="col-md-2 col-lg-2">
+            <div class="filter-title show-mob">Детали</div>
+            <ul>
+              <li class="ticket-list-title">Ручная кладь: есть</li>
+              <li>Багаж: 1 чемодан</li>
+              <li><a href="/">Сайт авиакомпании</a></li>
+            </ul>
+          </div>
+          <div class="col-md-2 col-lg-2 mob-price">
+           <div class="filter-title show-mob">Стоимость</div> </div>
+           <ul class="accept-ticket">
+            <li class="ticket-list-price">1427 UAH</li>
+            <li><button type="submit" class="btn btn-default">Выбрать</button></li>
+          </ul>
+        </div>
+      </div><!-- tickets-list end -->
+      <div class="row tickets-list">
+        <div class="col-md-2 col-lg-2">
+          <div class="filter-title show-mob">Авиакомпания</div>
+          <ul>
+            <li class="ticket-list-title">Belavia</li>
+            <li>Рейс: PS-517</li>
+            <li>Boeing 737-300</li>
+            <li>Эконом класс</li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-lg-2">
+          <div class="filter-title show-mob">Вылет</div>
+          <ul>
+            <li class="ticket-list-title">20:30</li>
+            <li>18 марта 2017,</li>
+            <li>Пятница</li>
+            <li>из Киев <span>KBP</span></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-lg-2">
+          <div class="filter-title show-mob">Прибытие</div>
+          <ul>
+            <li class="ticket-list-title">01:15</li>
+            <li>19 марта 2017,</li>
+            <li>Суббота</li>
+            <li>в Тбилиси <span>TBS</span></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-lg-2">
+          <div class="filter-title show-mob">В пути</div>
+          <ul>
+            <li class="ticket-list-title">3 ч 05 мин</li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-lg-2">
+          <div class="filter-title show-mob">Детали</div>
+          <ul>
+            <li class="ticket-list-title">Ручная кладь: есть</li>
+            <li>Багаж: 1 чемодан</li>
+            <li><a href="/">Сайт авиакомпании</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-lg-2 mob-price">
+          <div class="filter-title show-mob">Стоимость</div>
+          <ul class="accept-ticket">
+            <li class="ticket-list-price">1427 UAH</li>
+            <li><button type="submit" class="btn btn-default">Выбрать</button></li>
+          </ul>
+        </div>
+      </div><!-- tickets-list end -->
+      <div class="row tickets-list">
+        <div class="col-md-2 col-lg-2">
+          <div class="filter-title show-mob">Авиакомпания</div>
+          <ul>
+            <li class="ticket-list-title">UIA</li>
+            <li>Рейс: PS-517</li>
+            <li>Boeing 737-300</li>
+            <li>Эконом класс</li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-lg-2">
+          <div class="filter-title show-mob">Вылет</div>
+          <ul>
+            <li class="ticket-list-title">20:30</li>
+            <li>18 марта 2017,</li>
+            <li>Пятница</li>
+            <li>из Киев <span>KBP</span></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-lg-2">
+          <div class="filter-title show-mob">Прибытие</div>
+          <ul>
+            <li class="ticket-list-title">01:15</li>
+            <li>19 марта 2017,</li>
+            <li>Суббота</li>
+            <li>в Тбилиси <span>TBS</span></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-lg-2">
+          <div class="filter-title show-mob">В пути</div>
+          <ul>
+            <li class="ticket-list-title">3 ч 05 мин</li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-lg-2">
+          <div class="filter-title show-mob">Детали</div>
+          <ul>
+            <li class="ticket-list-title">Ручная кладь: есть</li>
+            <li>Багаж: 1 чемодан</li>
+            <li><a href="/">Сайт авиакомпании</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-lg-2 mob-price">
+          <div class="filter-title show-mob">Стоимость</div>
+          <ul class="accept-ticket">
+            <li class="ticket-list-price">1427 UAH</li>
+            <li><button type="submit" class="btn btn-default">Выбрать</button></li>
+          </ul>
+        </div>
+      </div><!-- tickets-list end -->
+      <footer class="row">
+        <div class="col-lg-3">
+          <a class="navbar-brand" href="#"><span>un</span>eight</a>
+          <div class="copyrights">Все права защищены © 2017</div>
+          <div class="social-links">
+            <a href="/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="/"><i class="fa fa-vk" aria-hidden="true"></i></a>
+            <a href="/"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+            <a href="/"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="bottom-title">О компании</div>
+          <a href="/">О нас</a>
+          <a href="/">Договоры и оферты</a>
+          <a href="/">Контакты</a>
+
+        </div>
+        <div class="col-lg-3">
+          <div class="bottom-title">Пользователям</div>
+          <a href="/">Вопросы и ответы</a>
+          <a href="/">Как купить и оплатить</a>
+          <a href="/">Блог</a>
+
+        </div>
+        <div class="col-lg-3">
+          <div class="bottom-title">Партнерам</div>
+          <a href="/">Перевозчикам</a>
+          <a href="/">Агентам</a>
+          <a href="/">Партнерская программа</a>
+        </div>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Modal title</h4>
+              </div>
+              <div class="modal-body">
+                <p>One fine body&hellip;</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+      </footer>
+
+    </div> <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script>
+      $(document).ready(function () {
+
+      });
+    </script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+  </html>
